@@ -1,0 +1,17 @@
+To start ngrok:
+
+1) navigate to /Desktop/slack
+
+2) run ./ngrok http 5000
+
+
+To link with slack:
+
+1) Open slash commands
+2) Edit slash commands /light
+3) Update link to ngrok link
+
+
+To run slackbot:
+
+1) run python request.py
