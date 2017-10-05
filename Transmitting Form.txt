@@ -1,0 +1,11 @@
+Forms:
+Solid Color
+Multi-Color Pattern
+	//only from website pattern builder
+	"Hard" transition
+	"Fade"
+
+Packet[]		// PI to AVR over I2C
+Packet[0] = speed 	(8bit integer) //how fast the transition occurs (ms)
+Packet[1] = step	(8bit integer) //how many colors between inputs
+Packet[2+i] = color	(HEX RGB)(48 bit) // up to 40 colors???
