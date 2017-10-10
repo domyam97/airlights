@@ -1,7 +1,7 @@
 import os
 from slackclient import SlackClient
 
-SLACK_TOKEN = 'xoxp-93150447840-248175250817-248752504436-7658a8821b4560ead3dab961b084a038'
+SLACK_TOKEN = 'xoxp-93150447840-248175250817-250975249522-daaad3a91b1a293c815befb519c07cea'
 #SLACK_WEBHOOK_SECRET = '
 
 slack_client = SlackClient(SLACK_TOKEN)
@@ -21,11 +21,12 @@ def send_message(channel_id, message):
         "chat.postMessage",
         channel=channel_id,
         text=message,
-        username='Airlights Bot',
+        username='Airlights',
         icon_emoji=':robot_face:'
     )
         
-
+channel_token
+message
 channels = list_channels()
 print(channels)
 if channels:
@@ -34,5 +35,5 @@ if channels:
         print(c['name'] + " (" + c['id'] + ")")
 else:
     print "ERORR"
-    
-send_message('C2R4ED864', "Sorry 'Erik' is not a valid name")
+
+send_message(channel_token, message) 
