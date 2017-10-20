@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from send_color import *
 
 app = Flask(__name__)
 
