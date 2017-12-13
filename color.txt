@@ -157,4 +157,4 @@ silver	#C0C0C0
 light gray	#D3D3D3
 light grey	#D3D3D3
 gainsboro	#DCDCDC
-white smoke	#F5F5F5	(245,245,245)
+white smoke	#F5F5F5
