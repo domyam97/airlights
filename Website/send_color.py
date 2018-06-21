@@ -1,6 +1,7 @@
 import colors
 import smbus
 
+forbidden = [2, 55, 95]
 
 def send_to_AVR(color_array):    
     device_bus = 1
@@ -18,6 +19,12 @@ def pass_color(color_in):
 		green = int(color[3:5], 16)
 		blue = int(color[5:7], 16)
 
+		if(red in forbidden):
+			red = red+1
+		if(blue in forbidden):
+			blue = blue+1
+		if(green in forbidden):
+			green = green+1
 	
 		# Form packet to send single color
 		packet = [55, 0, 0, 2, red, green, blue, 95]
