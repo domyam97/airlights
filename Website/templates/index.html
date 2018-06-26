@@ -1,18 +1,63 @@
 <html>
 
-<head>
-	<link rel="stylesheet" href='/static/htmlstuff.css' />
-</head>
-
 <body>
 	<h1>Airlights</h1>
+
+	<script type="text/javascript">
+		console.log("I'm here!");
+		var green = 0;
+		var red = 0;
+		var blue = 0;
+		var id = setInterval(frame, 10);
+
+		function hexColor(inputNumber){
+			var initial = '';
+			initial = inputNumber.toString(16);
+			if(initial.length == 1){
+				initial = '0' + initial;
+			}
+			return initial;
+		}
+
+		function frame(){
+			if('{{ currentBackground }}' == 'loop'){
+				var color = '#' + hexColor(red) + hexColor(green) + hexColor(blue);
+				document.body.style.background = color;
+ 				console.log(color);
+				red = red + 1;
+				if(red >= 255){red = 0;}
+				if(green >= 255){green = 0;}
+				if(blue >= 255){blue = 0;}
+			}
+			else{
+				document.body.style.background = '{{ currentBackground }}';
+			}
+		}
+	</script>
+
 	<form action="/colors" method="post">
 		
 		<p>Send me a color:
-			<input type="text" name="color"> 
-			<input type="submit" value="Submit">
+			<input type="text" name="color" autocomplete="off"> 
+			<input type="submit" name='submit_string' value="submit_string">
 		</p>
 	</form>
 
+	<form action="/colors" method="post">
+
+		<p>Send me an rgb value:
+			<p>R<input type="text" name="red" autocomplete="off"></p>
+			<p>G<input type="text" name="green" autocomplete="off"></p>
+			<p>B<input type="text" name="blue" autocomplete="off"></p>
+			<input type="submit" name='submit_hex' value="submit_hex">	
+		</p>
+	</form>
+
+	<form action="/colors" method="post">
+			<p>LOOP!<input type="submit" name="loop" value="loop"></p>
+	</form>
+
+	<h1>Current Color</h1>
+	<p>{{current}}</p>
 </body>
 </html>

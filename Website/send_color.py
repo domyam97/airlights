@@ -7,9 +7,12 @@ def send_to_AVR(color_array):
     addr = 0x69
     bus = smbus.SMBus(device_bus)
     bus.write_block_data(addr, 0x00, color_array)
-    pass	
+    pass
 
-def pass_color(color_in):
+
+forbidden = [2, 55, 95]
+
+def pass_color(color_in, step, speed):
 	color = color_in;
 	## determine whether color is hex or string // default type is color
 	if color[:1] == '#' :
@@ -18,9 +21,15 @@ def pass_color(color_in):
 		green = int(color[3:5], 16)
 		blue = int(color[5:7], 16)
 
+		if(red in forbidden):
+			red = red+1
+		if(blue in forbidden):
+			blue = blue+1
+		if(green in forbidden):
+			green = green+1
 	
 		# Form packet to send single color
-		packet = [55, 0, 0, 2, red, green, blue, 95]
+		packet = [55, step, speed, 2, red, green, blue, 95]
 
 		# Send packet to AVR
 		send_to_AVR(packet)
