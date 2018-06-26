@@ -1,6 +1,7 @@
 import colors
 import smbus
 
+forbidden = [2, 55, 95]
 
 def send_to_AVR(color_array):    
     device_bus = 1
