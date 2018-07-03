@@ -1,0 +1,4 @@
+from: can't read /var/mail/flask
+./app.py: 2: ./app.py: import: not found
+from: can't read /var/mail/send_color
+./app.py: 5: ./app.py: Syntax error: "(" unexpected

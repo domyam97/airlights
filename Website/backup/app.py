@@ -1,30 +1,24 @@
-from flask import Flask, render_template, request, Response, redirect
+from flask import Flask, render_template, request, Response
 import logging
 from send_color import *
-from colors import colors 
 
 app = Flask(__name__)
-
-
-global background        
-background = '#202020' 
-    
+        
+        
 @app.route('/')
 def website():
-	global background
+	background = '#FFFFFF'
 	return render_template('index.html', currentBackground=background)
 
 @app.route("/colors", methods=['POST'])
 def color_in():
-	global background
 	print('Got: ' + str(request.form))
 	if 'submit_string' in request.form:
 		color = request.form.get("color")
 		print("String color: " + str(color))
 		result = pass_color(color, 0, 0)
-		current = color   
-		print('#'+str(hex(colors[color]))[2:]) 
-		background = str('#'+str(hex(colors[color]))[2:])
+		current = color    
+		background = color
 
 	elif 'submit_hex' in request.form:
 		redStr = request.form.get('red')
@@ -79,7 +73,8 @@ def color_in():
 		current = 'loop'
 		background = 'loop'
 
-	return redirect('/')
+	return render_template('index.html', currentBackground=background, current=current)
+        
         
 if __name__ == "__main__":
 	app.run(debug=True, host='192.168.50.24')
